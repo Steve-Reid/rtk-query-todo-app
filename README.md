@@ -1,6 +1,28 @@
-# Getting Started with Create React App
+# Create React App Starter with Redux
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) TS template.
+A Create React App starter project
+
+## Tech Stack
+
+- Bootstrapped with [`create-react-app`](https://github.com/facebook/create-react-app).
+- React & React DOM v18
+- Type Checker - TypeScript v4.7.4
+- State Management - Redux Toolkit v1.8.3
+- Lint - ESlint v8, AirBnB & Eslint-config-next
+- Format - Prettier v2.7.1
+
+## Usage
+
+Inside the project directory run using `npm` or `yarn`:
+### Run
+
+```bash
+yarn dev
+# or
+npm run dev
+```
+
+Entry point `pages/index.tsx`.
 
 ## Available Scripts
 

@@ -1,9 +1,18 @@
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUpload } from '@fortawesome/free-solid-svg-icons';
+import { useGetTodosQuery } from '@features/api/apiSlice';
 
 const TodoList = () => {
   const [newTodo, setNewTodo] = useState('');
+
+  const {
+    data: todos,
+    isLoading,
+    isSuccess,
+    isError,
+    error
+  } = useGetTodosQuery();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -29,9 +38,28 @@ const TodoList = () => {
     </form>
   );
 
-  // eslint-disable-next-line prefer-const
-  let content = 'Content';
-  // Define conditional content
+  let content;
+  if (isLoading) {
+    content = <p>Loading...</p>;
+  } else if (isSuccess) {
+    content = JSON.stringify(todos);
+  } else if (isError) {
+    if ('status' in error) {
+      // FetchBaseQueryError type
+      const errMsg =
+        'error' in error ? error.error : JSON.stringify(error.data);
+
+      content = (
+        <div>
+          <div>An error has occurred:</div>
+          <div>{errMsg}</div>
+        </div>
+      );
+    } else {
+      // SerializedError type
+      content = <div>{error.message}</div>;
+    }
+  }
 
   return (
     <main>

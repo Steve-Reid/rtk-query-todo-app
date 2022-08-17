@@ -26,7 +26,8 @@
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
-    "eject": "craco eject"
+    "eject": "craco eject",
+    "start:db": "json-server --watch data/db.json --port 3500"
   },
   "browserslist": {
     "production": [
